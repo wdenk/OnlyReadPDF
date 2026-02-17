@@ -14,6 +14,10 @@ No local server is required.
 
 Open `/Users/jol/workspace/onlyreadPDF/index.html` directly in your browser.
 
+## Installation
+
+- End-user setup steps for macOS and Windows: `/Users/jol/workspace/onlyreadPDF/INSTALLATION.md`
+
 ## Notes
 
 - This app is fully offline. PDF.js files are bundled in `/Users/jol/workspace/onlyreadPDF/vendor`.
