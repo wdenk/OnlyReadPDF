@@ -20,8 +20,8 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 0.5rem;
   padding: 0.65rem 0.75rem;
@@ -35,6 +35,18 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+}
+
+.file-control {
+  justify-self: start;
+}
+
+.zoom-control {
+  justify-self: center;
+}
+
+.search-control {
+  justify-self: end;
 }
 
 .file-name {
@@ -156,12 +168,18 @@ body.drag-over .drop-overlay {
 }
 
 @media (max-width: 768px) {
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   .file-name {
     max-width: 9rem;
   }
 
   .search-control {
     width: 100%;
+    justify-self: auto;
   }
 
   #search-input {
