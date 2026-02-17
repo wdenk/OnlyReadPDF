@@ -45,3 +45,8 @@ This app runs locally in your browser and does not need a server.
 ## Notes
 
 - This app is fully offline. PDF.js files are bundled in `/Users/jol/workspace/onlyreadPDF/vendor`.
+
+## License
+
+- Project code license: MIT (`/Users/jol/workspace/onlyreadPDF/LICENSE`)
+- Third-party notices: `/Users/jol/workspace/onlyreadPDF/THIRD_PARTY_NOTICES.md`
