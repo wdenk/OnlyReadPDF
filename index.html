@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simple PDF Reader</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="toolbar">
+      <div class="file-control" title="Open PDF file">
+        <button id="open-button" type="button">Open</button>
+        <input id="file-input" type="file" accept="application/pdf" hidden />
+        <span id="file-name" class="file-name">No file selected</span>
+      </div>
+
+      <div class="zoom-control">
+        <button id="zoom-out" type="button" aria-label="Zoom out">-</button>
+        <button id="zoom-reset" type="button" aria-label="Reset zoom">100%</button>
+        <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
+      </div>
+
+      <form id="search-form" class="search-control">
+        <input
+          id="search-input"
+          type="search"
+          placeholder="Search"
+          autocomplete="off"
+          aria-label="Search text in PDF"
+        />
+        <button id="search-prev" type="button" aria-label="Previous match">
+          Prev
+        </button>
+        <button id="search-next" type="button" aria-label="Next match">Next</button>
+        <span id="search-status" aria-live="polite">0 matches</span>
+      </form>
+    </header>
+
+    <main id="viewer" aria-label="PDF pages">
+      <p id="empty-state" class="empty-state">
+        Open or drag a PDF file to start.
+      </p>
+    </main>
+
+    <div id="drop-overlay" class="drop-overlay" aria-hidden="true">
+      Drop PDF to open
+    </div>
+
+    <script src="vendor/pdf.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

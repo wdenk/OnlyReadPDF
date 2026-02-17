@@ -1,0 +1,171 @@
+:root {
+  color-scheme: light;
+  font-family: "Segoe UI", sans-serif;
+  background: #f3f5f8;
+  color: #111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.75rem;
+  background: #fff;
+  border-bottom: 1px solid #d8dfeb;
+}
+
+.file-control,
+.zoom-control,
+.search-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.file-name {
+  max-width: 20rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.92rem;
+  color: #3f4d68;
+}
+
+button,
+input[type="search"],
+input[type="file"]::file-selector-button {
+  border: 1px solid #c6cfde;
+  border-radius: 6px;
+  padding: 0.35rem 0.55rem;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  background: #f7faff;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+#search-input {
+  min-width: 12rem;
+}
+
+#search-status {
+  min-width: 6rem;
+  font-size: 0.9rem;
+  color: #3f4d68;
+}
+
+#viewer {
+  overflow: auto;
+  display: grid;
+  justify-content: center;
+  align-content: start;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.empty-state {
+  margin: 2.5rem 0;
+  color: #51607d;
+}
+
+.page {
+  position: relative;
+  background: #fff;
+  border: 1px solid #dbe2ef;
+  box-shadow: 0 4px 14px rgba(13, 29, 55, 0.08);
+}
+
+.page canvas {
+  display: block;
+}
+
+.text-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  line-height: 1;
+}
+
+.text-layer span {
+  position: absolute;
+  white-space: pre;
+  transform-origin: 0 0;
+  color: transparent;
+}
+
+.text-layer .search-hit {
+  background: rgba(255, 235, 80, 0.55);
+  color: transparent;
+  padding: 0;
+}
+
+.text-layer .search-hit.active-hit {
+  background: rgba(255, 162, 0, 0.72);
+}
+
+.page.match {
+  outline: 2px solid #8fb2ff;
+  outline-offset: 2px;
+}
+
+.page.active-match {
+  outline: 3px solid #2f6cff;
+  outline-offset: 2px;
+}
+
+.drop-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  place-items: center;
+  background: rgba(35, 58, 99, 0.14);
+  color: #0e2248;
+  font-size: 1.6rem;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+body.drag-over .drop-overlay {
+  display: grid;
+}
+
+@media (max-width: 768px) {
+  .file-name {
+    max-width: 9rem;
+  }
+
+  .search-control {
+    width: 100%;
+  }
+
+  #search-input {
+    flex: 1;
+    min-width: 0;
+  }
+}
