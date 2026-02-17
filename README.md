@@ -7,6 +7,8 @@ Minimal browser PDF reader with:
 - text search with real in-page term highlighting and previous/next match navigation
 - drag-and-drop PDF open
 - Ctrl + mouse wheel zoom
+- keyboard shortcuts: `x` (next), `y` (previous)
+- hold `Ctrl (STRG)` to show shortcut popup
 
 ## Run
 

@@ -167,6 +167,53 @@ body.drag-over .drop-overlay {
   display: grid;
 }
 
+.shortcuts-popup {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 20;
+  min-width: 13rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #bfd0ef;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 22px rgba(9, 27, 61, 0.16);
+  font-size: 0.88rem;
+  color: #1b2d52;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.shortcuts-popup.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.shortcuts-popup strong {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.shortcuts-popup ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.shortcuts-popup li + li {
+  margin-top: 0.22rem;
+}
+
+.shortcuts-popup kbd {
+  border: 1px solid #c9d3e7;
+  border-radius: 4px;
+  padding: 0.05rem 0.32rem;
+  font: inherit;
+  background: #f7f9fe;
+}
+
 @media (max-width: 768px) {
   .toolbar {
     display: flex;
@@ -185,5 +232,11 @@ body.drag-over .drop-overlay {
   #search-input {
     flex: 1;
     min-width: 0;
+  }
+
+  .shortcuts-popup {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    min-width: 12rem;
   }
 }

@@ -17,6 +17,7 @@ const searchNextButton = document.getElementById("search-next");
 const searchStatus = document.getElementById("search-status");
 const viewer = document.getElementById("viewer");
 const emptyState = document.getElementById("empty-state");
+const shortcutsPopup = document.getElementById("shortcuts-popup");
 
 const state = {
   pdfDoc: null,
@@ -70,6 +71,7 @@ searchNextButton.addEventListener("click", () => {
 
 enableDragAndDrop();
 enableCtrlWheelZoom();
+enableKeyboardShortcuts();
 
 async function openFile(file) {
   if (!file) {
@@ -432,6 +434,69 @@ function enableCtrlWheelZoom() {
       });
     },
     { passive: false }
+  );
+}
+
+function enableKeyboardShortcuts() {
+  let ctrlHeld = false;
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Control") {
+      if (!ctrlHeld) {
+        ctrlHeld = true;
+        showShortcutsPopup(true);
+      }
+      return;
+    }
+
+    if (event.ctrlKey || event.metaKey || event.altKey) {
+      return;
+    }
+
+    if (isTextInputFocused(event.target)) {
+      return;
+    }
+
+    const key = event.key.toLowerCase();
+    if (key === "x") {
+      event.preventDefault();
+      moveMatch(1);
+      return;
+    }
+
+    if (key === "y") {
+      event.preventDefault();
+      moveMatch(-1);
+    }
+  });
+
+  window.addEventListener("keyup", (event) => {
+    if (event.key === "Control") {
+      ctrlHeld = false;
+      showShortcutsPopup(false);
+    }
+  });
+
+  window.addEventListener("blur", () => {
+    ctrlHeld = false;
+    showShortcutsPopup(false);
+  });
+}
+
+function showShortcutsPopup(visible) {
+  if (!shortcutsPopup) {
+    return;
+  }
+  shortcutsPopup.classList.toggle("visible", visible);
+  shortcutsPopup.setAttribute("aria-hidden", visible ? "false" : "true");
+}
+
+function isTextInputFocused(target) {
+  if (!(target instanceof HTMLElement)) {
+    return false;
+  }
+  return Boolean(
+    target.closest("input, textarea, select, [contenteditable]:not([contenteditable='false'])")
   );
 }
 
